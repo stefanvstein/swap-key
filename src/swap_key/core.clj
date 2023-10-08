@@ -5,7 +5,7 @@
   "Swap k value of associative atom with f, without bothering 
   about other parts of atom value. The updating f, will not be 
   called again on retry, unless the original value of k in atom 
-  has changed. Behaves similar to update. Usefull when f i costly."
+  has changed. Behaves similar to update. Usefull when f is costly."
   ([atom k f]
    (loop [old @atom
           new (update old k f)]
