@@ -1,12 +1,12 @@
 (ns swap-key.core
-  "atoms can be finer grained than swap! Non dependent parts can be omited when retrying")
+  "Atoms can be finer grained than swap! Non dependent parts can be omitted when retrying")
 
 
 (defn swap-key!
   "Swap k value of associative atom with f, without bothering 
   about other parts of atom value. The updating f, will not be 
   called again on retry, unless the original value of k in atom 
-  has changed. Behaves similar to update. Usefull when f is costly."
+  has changed. Behaves similar to update. Useful when f is costly."
   ([atom k f]
    (loop [old @atom
           new (update old k f)]
@@ -34,7 +34,7 @@
   that will take the old value, and any supplied args, and return 
   the new value swapped in. The updating f, will not be 
   called again on retry, unless the original value at path in atom 
-  has changed. Behaves similar to update-in. Usefull when f i costly."
+  has changed. Behaves similar to update-in. Useful when f i costly."
   ([atom ks f]
    (loop [old @atom
           new (update-in old ks f)]
@@ -63,8 +63,8 @@
   (map #(get-in m %) paths))
 
 (defn update-on
-  "update destination-path of m, where values of paths of m, 
-  followed by all in xtra-args, is applied to f"
+  "update destination-path of m, with values from paths of m, 
+  followed by all in xtra-args, applied to f"
   [m destination-path f paths xtra-args]
   (let [argz (concat (values m paths)
                      xtra-args)]
