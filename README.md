@@ -25,7 +25,7 @@ The sum function will not be retried, unless the value of `:second` has changed 
 
 would likewise swap in 7 in `{:first 0 :tower {:left 1 :right {:value 7}}}` similarly to update-in. The `sum` function will only be retried up on a concurrent change of the path `:tower :right :value`. When something else is concurrently changed a simple `compare-and-set!` will occur, with the already transformed value associated.
 
-It's possible to update a part with more than one dependency, and still reduce retries:
+It's possible to update part with more than one dependency, and still reduce retries, by specifying each:
 
 ```clojure
 (def a (atom {:first 4 :tower {:left 1 :right {:value 2}}}))
