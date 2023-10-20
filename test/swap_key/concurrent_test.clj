@@ -29,7 +29,7 @@
       (flush))
     (let [work (fn work [a i]
                  (dotimes [n 1000]
-                   #_(Thread/yield)
+                   (Thread/yield)
                    (when (and (< 0 i) (= 0 (mod n 5)))
                      (sk/swap-key! a (dec i) (fnil dec 0)))
                    (sk/swap-key! a i (fnil inc 0))))
@@ -52,7 +52,7 @@
       (flush))
     (let [work (fn work [a i]
                  (dotimes [n 1000]
-                   #_(Thread/yield)
+                   (Thread/yield)
                    (when (and (< 0 i) (= 0 (mod n 5)))
                      (sk/swap-key-in! a [:a (dec i)] (fnil dec 0)))
                    (sk/swap-key-in! a [:a i] (fnil inc 0))))
@@ -76,7 +76,7 @@
       (flush))
     (let [work (fn work [a i]
                  (dotimes [n 1000]
-                   #_(Thread/yield)
+                   (Thread/yield)
                    (when (and (< 0 i) 
                               (= 0 (mod n 5)))
                      (sk/swap-key-on! a 
